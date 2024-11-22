@@ -1,5 +1,5 @@
 
-# **Demo Microservicio**
+# **Consultorio Microservicio**
 
 Este proyecto es un microservicio desarrollado con **Spring Boot**, utilizando **Java 21** y una base de datos **MySQL**. Proporciona una arquitectura RESTful y está configurado para facilitar su despliegue y mantenimiento.
 
