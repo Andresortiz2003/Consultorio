@@ -148,4 +148,24 @@ class ControladorIntegrationTest {
 
         verify(editarPacientesServices, times(1)).editarpaciente(Mockito.any(Paciente.class));
     }
+
+    @Test
+    void consultarTodosTest2() throws Exception {
+        // Arrange
+        List<Paciente> paciente = List.of(
+                new Paciente( "Anthony", 1002, "Perez", 30178, "antho@example.com"));
+
+        when(consultarPacientesServices.consultarTodoslospacientes()).thenReturn(paciente);
+
+        // Act & Assert
+        mockMvc.perform(get("/consultorio/"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.length()").value(1))
+                .andExpect(jsonPath("$[0].nombre").value("Anthony"))
+                .andExpect(jsonPath("$[0].apellidos").value("Perez"))
+                .andExpect(jsonPath("$[0].email").value("antho@example.com"));
+
+        verify(consultarPacientesServices, times(1)).consultarTodoslospacientes();
+    }
 }
